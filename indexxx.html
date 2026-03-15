@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу | Карина и Евгений</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #8B6F9E;
+            --color-secondary: #B8A9C9;
+            --color-text: #3D3D3D;
+            --color-light: #F5F0F8;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #F5F0F8 0%, #EBE4F0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: var(--color-text);
+        }
+
+        .invitation-card {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            padding: 80px 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(139, 111, 158, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Декоративные элементы */
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        }
+
+        .invitation-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        }
+
+        .invitation-header {
+            margin-bottom: 40px;
+        }
+
+        .invitation-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        /* Секция с фотографией */
+        .photo-section {
+            margin: 40px 0;
+        }
+
+        .photo-frame {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 15px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(139, 111, 158, 0.2);
+            position: relative;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid var(--color-secondary);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .couple-photo {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #F5F0F8 0%, #EBE4F0 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-secondary);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .couple-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--color-text);
+            margin: 40px 0;
+            line-height: 1.2;
+        }
+
+        .couple-names span {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .ampersand {
+            font-style: italic;
+            color: var(--color-secondary);
+            font-size: 2.5rem;
+        }
+
+        .decorative-line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+            margin: 30px auto;
+        }
+
+        .wedding-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin: 40px 0;
+            padding: 20px;
+            border-top: 1px solid var(--color-secondary);
+            border-bottom: 1px solid var(--color-secondary);
+        }
+
+        .location-section {
+            margin-top: 50px;
+            padding: 40px;
+            background: var(--color-light);
+            border-radius: 15px;
+        }
+
+        .location-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .location-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 10px;
+        }
+
+        .location-address {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .invitation-footer {
+            margin-top: 50px;
+            font-style: italic;
+            color: var(--color-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Стили для печати */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .invitation-card {
+                box-shadow: none;
+                max-width: 100%;
+                padding: 60px 40px;
+            }
+
+            .invitation-card::before,
+            .invitation-card::after {
+                display: none;
+            }
+
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 768px) {
+            .invitation-card {
+                padding: 50px 30px;
+            }
+
+            .invitation-title {
+                font-size: 1.8rem;
+            }
+
+            .photo-frame {
+                padding: 10px;
+            }
+
+            .couple-photo,
+            .photo-placeholder {
+                height: 350px;
+            }
+
+            .couple-names {
+                font-size: 2.5rem;
+            }
+
+            .ampersand {
+                font-size: 2rem;
+            }
+
+            .wedding-date {
+                font-size: 1.4rem;
+            }
+
+            .location-section {
+                padding: 30px 20px;
+            }
+
+            .location-title {
+                font-size: 1.5rem;
+            }
+
+            .location-name {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-card">
+        <div class="invitation-header">
+            <h1 class="invitation-title">Приглашаем вас на нашу свадьбу</h1>
+        </div>
+
+        <!-- Секция с фотографией -->
+        <div class="photo-section">
+            <div class="photo-frame">
+                <!-- ЗАМЕНИТЕ НА ВАШУ ФОТОГРАФИЮ -->
+                <img src="images/hero/couple-main.jpg" alt="Карина и Евгений" class="couple-photo">
+            </div>
+        </div>
+
+        <div class="couple-names">
+            <span>Карина</span>
+            <span class="ampersand">&</span>
+            <span>Евгений</span>
+        </div>
+
+        <div class="decorative-line"></div>
+
+        <div class="wedding-date">
+            7 августа 2026 года<br>
+            16:30 (UTC +3)
+        </div>
+
+        <div class="location-section">
+            <h2 class="location-title">Место проведения</h2>
+            <div class="location-name">Орловский дворец зал "Милли"</div>
+            <div class="location-address">
+                Орловская улица, 209<br>
+                посёлок Орловка, г. Набережные Челны
+            </div>
+        </div>
+
+        <div class="invitation-footer">
+            С любовью ждём вас на нашем празднике
+        </div>
+    </div>
+
+    <script>
+        // Автоматическое окно печати (опционально)
+        // window.onload = function() {
+        //     window.print();
+        // }
+    </script>
+</body>
+</html>
